@@ -25,6 +25,17 @@ ReactDom.render<{ component: ReactElement; target: any }>(
   document.getElementById('root')
 );
 
+// Service Workers
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('../serviceWorkers.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(err => console.log('Error: ', err));
+  });
+}
+
 // "allowJs": true,
 // "skipLibCheck": true,
 // "esModuleInterop": true,
